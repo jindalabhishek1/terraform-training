@@ -17,3 +17,7 @@ resource "aws_instance" "web-app" {
     Name = "Web-App"
   }
 }
+
+data "aws_instance" "my-web-app" {
+  instance_id = aws_instance.web-app[0].id
+}
