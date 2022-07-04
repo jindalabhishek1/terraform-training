@@ -34,9 +34,9 @@
     * Used to get information from the provider
     * Kind on API to fetch the 
     * Example:
-        ```json
-            data "aws_instance" "my-web-app" {
-                instance_id = aws_instance.web-app[0].id
-            }
-        ```
+    ```json
+        data "aws_instance" "my-web-app" {
+            instance_id = aws_instance.web-app[0].id
+        }
+    ```
     * Documentation for data source under each service in provider documentation
