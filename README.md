@@ -63,3 +63,28 @@
 10. must have output
 11. asg and alb must have custom sg
 12. create one more environment called test from dev environment using workspace isolation
+
+
+### Day 17:
+
+---
+
+#### Learnings
+
+* How to upload an object
+* If you change the content of the object, and the "etag" argument is not set, terraform will see no changes
+    * To do so, we need to add "etag" attribute, which checks the integrity of the file by calculating MD5 hash of the file 
+        and matching it with the etag calculated by AWS in the backend.
+* How to upload a folder
+    * Use "for_each" function and "fileset" function
+    ```json
+        resource "aws_s3_object" "test_object" {
+            for_each  = fileset("./test_folder/", "**")
+            bucket = aws_s3_bucket.test_bucket.bucket
+            key    = "/test_folder/${each.value}" # destination file name
+            source = "./test_folder/${each.value}"  # source file path
+            etag   = filemd5("./test_folder/${each.value}") # calculating MD5 hash of the file locally and match that with etag in AWS side.
+        }
+    ```
+    * Empty folders will not be uploaded, because fileset function only gets files
+    * "**" helps in identifying the files in sub directory using "fileset" function
