@@ -88,3 +88,20 @@
     ```
     * Empty folders will not be uploaded, because fileset function only gets files
     * "**" helps in identifying the files in sub directory using "fileset" function
+ 
+    
+### Day 19:
+
+---
+
+#### Learnings
+
+* We can use "aws_s3_bucket_website_configuration" terraform resource for configuring static website
+* AWS by default puts "Content-Type: application/octet-stream" which will tell browser that it is a binary file so it will download the file
+  instead of displaying the content in browser
+    * To solve this use ``content_type = "text/html"`` while uploading the object from terraform
+
+#### Tasks
+
+* Create a s3 bucket with read object permission with bucket policy
+* Create a bucket with static website hosting
