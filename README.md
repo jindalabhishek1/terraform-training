@@ -105,3 +105,24 @@
 
 * Create a s3 bucket with read object permission with bucket policy
 * Create a bucket with static website hosting
+
+
+### Day 20
+
+---
+
+#### Learnings
+
+* If any variable, output is marked as sensitive, still the value is stored in statefile
+  , but it will not be shown in output.
+    * We can use ``terraform output <output_name>`` to show the values
+    * This "sensitive" flag is a security risk
+
+#### Tasks:
+
+* Create IAM users from a list
+* Create Cross account role with the same account
+* Create password, access keys
+    * Understand the "sensitive" flag in variable
+* Create a user, and provide it "S3ReadOnly access"
+* 
