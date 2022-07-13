@@ -107,7 +107,7 @@
 * Create a bucket with static website hosting
 
 
-### Day 20
+### Day 20:
 
 ---
 
@@ -125,4 +125,20 @@
 * Create password, access keys
     * Understand the "sensitive" flag in variable
 * Create a user, and provide it "S3ReadOnly access"
-* 
+
+
+### Day 21:
+
+---
+
+#### Learnings
+
+* If we are not using ``managed_policy_arns`` or ``inline_policy`` argument,
+  and we manually add the managed policy or inline policy, terraform will not detect any change.
+    * For terraform to detect, we should add ``managed_policy_arns = []`` or ``inline_policy {}``.
+    * This way, terraform will detect the drifts, if something is added or removed manually.
+    * The policies will still be available in state file, even if we don't add those empty blocks of code for managed policy or inline policy.
+    * We can use ``terraform plan/apply -replace=<resource>.<resource_identifier>``
+        * For example: ``terraform plan -replace=aws_iam_role.ec2_role``
+        
+ 
