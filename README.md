@@ -142,3 +142,16 @@
         * For example: ``terraform plan -replace=aws_iam_role.ec2_role``
         
  
+### Day 24:
+
+---
+
+#### Learning:
+
+* When we have to refer a resource from one module to another, 
+  we have to create an output of that attribute or resource 
+  and we have to create a variable of same attribute within another module
+* We should provide the provider and backend in the application folder where we will use the module
+* We can't define two sources in one module, we have to create seperate module blocks
+* BE CAREFULL: When you are working with file paths, it will be relative to the directory from where we are using the module and not from the the module defination directory
+    * Best case: Use a variable for user-data.sh file path, and provide the value while calling the module
